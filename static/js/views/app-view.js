@@ -25,8 +25,18 @@ $(function() {
             $('#todo-list').append(view.render().el);
         },
         addAll: function(){
-            this.$('#todo-list').html(''); // clean the todo list
-            app.todoList.each(this.addOne, this);
+            this.$('#todo-list').html(''); // clean the todo list// filter todo item list
+            switch(window.filter){
+                case 'pending':
+                _.each(app.todoList.remaining(), this.addOne);
+                break;
+                case 'completed':
+                _.each(app.todoList.completed(), this.addOne);
+                break;            
+                default:
+                app.todoList.each(this.addOne, this);
+                break;
+            }
         },
         newAttributes: function(){
             return {
