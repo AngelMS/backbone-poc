@@ -14,6 +14,10 @@ $(function() {
     var AppView = Backbone.View.extend({
         // el - stands for element. Every view has a element associate in with HTML
         //      content will be rendered.
+        // Every view needs to reference a DOM at all times. Therefore, the view will
+        // inject content into this element. This is the "el" property. "this.el" is created 
+        // from view’s "el","tagName", "className", "id" or "attributes" properties. 
+        // If none of these are specified, then "this.el" is an empty "div"
         el: $('#container-template'),
         // template which has the placeholder 'who' to be substitute later
         template: _.template("<h3>Hello <%= who %></h3>"),
